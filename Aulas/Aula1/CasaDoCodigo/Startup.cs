@@ -53,7 +53,10 @@ namespace CasaDoCodigo
                     template: "{controller=Pedido}/{action=Carrossel}/{id?}");
             });
 
-            serviceProvider.GetService<ApplicationContext>().Database.EnsureCreated();
+            //serviceProvider.GetService<ApplicationContext>().Database.EnsureCreated();
+            
+            // Utilizando o método .Migrate() permite que o banco seja criado e continue a receber migrações caso seja necessário.
+            serviceProvider.GetService<ApplicationContext>().Database.Migrate();
         }
     }
 }
